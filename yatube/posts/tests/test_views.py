@@ -61,7 +61,7 @@ class PostURLTest(TestCase):
             content=small_jpg,
             content_type='image/jpg'
         )
-        return uploaded 
+        return uploaded
 
     def test_pages_uses_correct_template(self):
         """URL-адрес использует соответсвующий шаблон."""
