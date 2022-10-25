@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from core.models import CreatedModel
-from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
@@ -67,7 +66,7 @@ class Comment(CreatedModel):
         ordering = ('created',)
 
     def __str__(self):
-        return 'Comment by {} on {}'.format(self.name, self.post)
+        return 'Comment by {} on {}'.format(self.author.username, self.post)
 
 
 class Follow(models.Model):
@@ -75,13 +74,11 @@ class Follow(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='follower',
-        null=True
     )
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='following',
-        null=True
     )
 
     class Meta:
